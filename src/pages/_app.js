@@ -1,6 +1,13 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import Head from 'next/head';
 
+const theme = {
+    colors: {
+        primary: '#151515',
+        secondary: '#C2C2C2',
+    },
+}
+
 const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
@@ -9,21 +16,14 @@ const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
         font-family: 'Lato', sans-serif;
+        background-color: ${theme.colors.primary};
     }
     #__next {
         flex: 1;
         display: flex;
         flex-direction: column;
     }
-
     `
-
-const theme = {
-    colors: {
-        primary: '#151515',
-        secondary: '#C2C2C2',
-    },
-}
 
 export default function App({ Component, pageProps }) {
     return (

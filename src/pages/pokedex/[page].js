@@ -20,13 +20,17 @@ function Home({pokedex}) {
     <Container>
       <Container>
         <List>
+          {/* Color => 0 to 255 */}
           {pokedex.map((pokemon,index)=>{
             return(
               <Card 
+              key={index}
               page={router.query.page} 
               index={index} 
               name={pokemon.name}
               href='/pokemon/1'
+              delay={`${index * 0.2}s`}
+              color={(index/20)*255}
               />
             )
           })}
