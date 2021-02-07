@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Container } from '../styles/pokedex';
 import { ItemLink, LinkConteiner, Title, ContainerImage } from '../styles/homePage';
-//import Image from 'next/image';
+
 export default function Home() {
     return (
     <Container>
