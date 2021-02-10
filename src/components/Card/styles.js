@@ -18,14 +18,24 @@ export const CardContainer = styled.a`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    padding: 5px;
     opacity: 0;
     animation: ${fadein} 0.5s forwards ${({delay})=>delay};
-    //background-image: linear-gradient(135deg, rgb(0,0,255), rgb(${({color})=>color}, 0, 255));
-    background-image: radial-gradient(ellipse farthest-corner at 60% 60%, rgb(255,0,255), rgb(0, 0, 255)); 
+    background-image: linear-gradient(135deg, rgb(0,0,255), rgb(255, 0, 255));
+    //background-image: radial-gradient(ellipse farthest-corner at 60% 60%, rgb(255,0,255), rgb(0, 0, 255)); 
     &:hover{
         cursor: pointer;
     }
+`;
+export const CardMain = styled.div`
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: ${({theme})=>theme.colors.primary};
+    border-radius: 10px;
+    padding: 30px;
 `;
 export const Title = styled.h3`
     color: #FFFFFF;
