@@ -8,7 +8,8 @@ export const Container = styled.div`
 export const List = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+    width: 100%;
 `;
 
 export const ButtonContainer = styled.div`

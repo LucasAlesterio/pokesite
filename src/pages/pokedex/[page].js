@@ -8,12 +8,13 @@ function Home({pokedex}) {
   if (router.isFallback) {
     return <Container >Loading...</Container>
   }
+  const page = parseInt(router.query.page);
   function nextPage(){
-    router.push(`/pokedex/${parseInt(router.query.page) + 1}`);
+    router.push(`/pokedex/${page + 1}`);
   }
   function previousPage(){
-    if(router.query.page > 1){
-      router.push(`/pokedex/${parseInt(router.query.page) - 1}`);
+    if(page > 1){
+      router.push(`/pokedex/${page - 1}`);
     }
   }
   return (
@@ -25,10 +26,10 @@ function Home({pokedex}) {
             return(
               <Card 
               key={index}
-              page={router.query.page} 
+              page={page} 
               index={index} 
               name={pokemon.name}
-              href='/pokemon/1'
+              href={`/pokemon/${index + page}`}
               delay={`${index * 0.2}s`}
               color={(index/20)*255}
               />
