@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }) {
             <GlobalStyle />
             <ThemeProvider theme={theme}>
                 <Head>
-                    <title>Pokedex</title>
+                    <title>Wikidex</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"></link>

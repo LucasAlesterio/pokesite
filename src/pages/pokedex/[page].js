@@ -17,11 +17,12 @@ function Home({pokedex}) {
       router.push(`/pokedex/${page - 1}`);
     }
   }
+  const maxForPage = 20;
+  const calcNumberPokedex = 1 + ((page - 1) * maxForPage);
   return (
     <Container>
       <Container>
         <List>
-          {/* Color => 0 to 255 */}
           {pokedex.map((pokemon,index)=>{
             return(
               <Card 
@@ -29,9 +30,8 @@ function Home({pokedex}) {
               page={page} 
               index={index} 
               name={pokemon.name}
-              href={`/pokemon/${index + page}`}
+              href={`/pokemon/${(index + calcNumberPokedex)}`}
               delay={`${index * 0.2}s`}
-              color={(index/20)*255}
               />
             )
           })}
