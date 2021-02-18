@@ -15,13 +15,13 @@ const focusCard = keyframes`
         transform: scale(1);
     }
     to{
-        transform: scale(2);
+        transform: scale(1.1);
     }
 `;
 const unFocusCard = keyframes`
     from{
         opacity: 1;
-        transform: scale(2);
+        transform: scale(1.1);
     }
     to{
         opacity: 1;
@@ -42,13 +42,13 @@ export const CardContainer = styled.a`
 
     animation: ${({animate})=>
         animate ? fadein : unFocusCard
-        } 0.5s forwards ${({animate,delay})=>  animate && delay };
+        } 0.3s forwards ${({animate,delay})=>  animate && delay };
     background-image: linear-gradient(135deg, rgb(0,0,255), rgb(255, 0, 255));
     &:hover{
         cursor: pointer;
         opacity: 1;
         z-index:2;
-        animation: ${focusCard} 0.5s forwards;
+        animation: ${focusCard} 0.3s forwards;
     }
     @media(max-width: 800px) {
         width: 200px;

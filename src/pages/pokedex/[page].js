@@ -64,7 +64,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/?offset=${(parseInt(params.page)-1) * 20}&limit=20`);
+  const initialPoke = ((parseInt(params.page) - 1 ) * 20);
+  const response = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon-species/?offset=
+    ${initialPoke}&limit=20`);
   const pokedex = await response.data.results;
   return {
     props: {
