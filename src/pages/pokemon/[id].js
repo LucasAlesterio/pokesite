@@ -3,7 +3,9 @@ import Image from 'next/image';
 import { useRouter } from 'next/router'
 import { Container } from '../../styles/pokedex';
 import { Name } from '../../styles/pokemon';
-
+import '../../components/type';
+import {Type} from  '../../components/type'
+import { Stats } from '../../components/stats'
 function Poke({pokemon}) {
     const router = useRouter()
     if (router.isFallback) {
@@ -14,7 +16,6 @@ function Poke({pokemon}) {
     //https://cdn.traction.one/pokedex/pokemon/${router.query.id}.png
     return(
         <Container >
-            
             <Image
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
             alt={id}
@@ -62,18 +63,10 @@ function Poke({pokemon}) {
             <img src={pokemon.sprites.other.dream_world.front_female} 
             alt='drean world'/>
             }
-
-            <Name>{pokemon.forms[0].name}</Name>
-
-            <Name>Moves:</Name>
-            {pokemon.moves.map((move)=>(
-                <p style={{color:'#C2C2C2'}}> {move.move.name}</p>
-            ))
-
-            }
+            <Name>{pokemon.name}</Name>
             <Name>Types:</Name>
             {pokemon.types.map((type)=>(
-                <Name>{type.type.name}</Name>
+                <Type type={ type.type.name}/>
             ))}
 
             <Name>Weight:</Name>
@@ -84,11 +77,31 @@ function Poke({pokemon}) {
 
             <Name>Stats:</Name>
             {pokemon.stats.map((stat)=>(
+                <Stats
+                size={20}
+                name={stat.stat.name}
+                value={stat.base_stat}
+                width={200}
+                height={20}
+                />
+            ))}
+            <Name>Moves:</Name>
+            {pokemon.moves.map((move)=>(
                 <>
-                <Name>{stat.stat.name}</Name>
-                <Name>{stat.base_stat}</Name>
+                <h4 style={{color:'#C2C2C2'}}>{move.move.name}</h4>
+                {move.version_group_details.map((version)=>(
+                    <>
+                    {/* level learned */}
+                    <p style={{color:'red'}}>{version.level_learned_at}</p>
+                    {/* method learned */}
+                    <p style={{color:'blue'}}>{version.move_learn_method.name}</p>
+                    {/* group name */}
+                    <p style={{color:'green'}}>{version.version_group.name}</p>
+                    </>
+                ))}
                 </>
             ))}
+
         </Container>
     )}
 export async function getStaticPaths() {
@@ -109,13 +122,6 @@ export async function getStaticProps({ params }) {
     const {data} = await axios.get(
     `https://pokeapi.co/api/v2/pokemon/${numberPoke}`
     )
-    // let pokemon ={};
-    // pokemon.types = [];
-    // pokemon.sprites = data.sprites;
-    // pokemon.forms = data.forms;
-    // for(let type in data.types){
-    //     pokemon.types.push(data.types[type].type.name)
-    // }
     return {
         props: {
             pokemon:data

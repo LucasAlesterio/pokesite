@@ -39,11 +39,11 @@ export const CardContainer = styled.a`
     align-items: center;
     justify-content: center;
     opacity: ${({animate})=> animate ? 0 : 1 };
-
     animation: ${({animate})=>
         animate ? fadein : unFocusCard
         } 0.3s forwards ${({animate,delay})=>  animate && delay };
-    background-image: linear-gradient(135deg, rgb(0,0,255), rgb(255, 0, 255));
+    //background-image: linear-gradient(135deg, rgb(0,0,255), rgb(255, 0, 255));
+    background-image: linear-gradient(135deg, ${({theme})=>(theme.colors.gradient1)},${({theme})=>(theme.colors.gradient2)});
     &:hover{
         cursor: pointer;
         opacity: 1;

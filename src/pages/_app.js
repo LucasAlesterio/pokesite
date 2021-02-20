@@ -5,6 +5,8 @@ const theme = {
     colors: {
         primary: '#151515',
         secondary: '#C2C2C2',
+        gradient1: '#FC00FF',
+        gradient2: '#00DBDE',
     },
 }
 
